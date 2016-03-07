@@ -55,10 +55,13 @@ class App extends React.Component {
     const notes = this.state.notes
     return (
       <div>
-        <button onClick={this.addNote}>+</button>
-        <Notes notes={notes}
-               onEdit={this.editNote}
-               onDelete={this.deleteNote}
+        <button onClick={this.addNote}>
+          <i className="fa plus-square"></i>
+        </button>
+        <Notes
+          notes={notes}
+          onEdit={this.editNote}
+          onDelete={this.deleteNote}
         />
       </div>
     )

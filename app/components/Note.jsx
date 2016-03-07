@@ -11,12 +11,13 @@ class Note extends React.Component {
 
   renderEdit = () => {
     return (
-      <input type="text"
-             ref={(e) => e ? e.selectionStart = this.props.task.length : null}
-             autoFocus={true}
-             defaultValue={this.props.task}
-             onBlur={this.finishEdit}
-             onKeyPress={this.checkEnter}
+      <input
+        type="text"
+        ref={(e) => e ? e.selectionStart = this.props.task.length : null}
+        autoFocus={true}
+        defaultValue={this.props.task}
+        onBlur={this.finishEdit}
+        onKeyPress={this.checkEnter}
       />
     )
   }
@@ -32,7 +33,11 @@ class Note extends React.Component {
   }
 
   renderDelete = () => {
-    return <button onClick={this.props.onDelete}>x</button>
+    return (
+      <button onClick={this.props.onDelete}>
+        <i className="fa fa-times"></i>
+      </button>
+    )
   }
 
   edit = () => {
@@ -64,3 +69,5 @@ class Note extends React.Component {
     return this.renderNote()
   }
 }
+
+export default Note

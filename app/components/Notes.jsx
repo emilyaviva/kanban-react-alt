@@ -7,8 +7,8 @@ export default ({notes, onEdit, onDelete}) => {
       {notes.map(note =>
         <li key={note.id}>
           <Note task={note.task}
-                onEdit={onEdit.bind(null, note.id)}
-                onDelete={onDelete.bind(null, note.id)}
+            onEdit={onEdit.bind(null, note.id)}
+            onDelete={onDelete.bind(null, note.id)}
           />
         </li>
       )}
