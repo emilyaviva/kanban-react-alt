@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const NpmInstallPlugin = require('npm-install-webpack-plugin')
@@ -9,7 +9,12 @@ const PATHS = {
   build: path.join(__dirname, 'build')
 }
 
+process.env.BABEL_ENV = TARGET
+
 const common = {
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
   entry: {
     app: PATHS.app
   },
@@ -20,6 +25,14 @@ const common = {
   module: {
     loaders: [
       {
+        test: /\.jsx?$/,
+        loader: 'babel',
+        query: {
+          cacheDirectory: true,
+          presets: ['react', 'es2015', 'survivejs-kanban']
+        },
+        include: PATHS.app
+      }, {
         test: /\.s[ac]ss$/,
         loaders: ['style', 'css', 'sass'],
         include: PATHS.app
@@ -51,5 +64,5 @@ if (TARGET === 'start' || !TARGET) {
 }
 
 if (TARGET === 'build') {
-  module.exports = merge(common, {});
+  module.exports = merge(common, {})
 }
