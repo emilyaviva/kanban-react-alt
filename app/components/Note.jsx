@@ -25,8 +25,10 @@ class Note extends React.Component {
   renderNote = () => {
     const onDelete = this.props.onDelete
     return (
-      <div onClick={this.edit}>
-        <span>{this.props.task}</span>
+      <div className="note-contents">
+        <div className="task" onClick={this.edit}>
+          <span>{this.props.task}</span>
+        </div>
         {onDelete ? this.renderDelete() : null}
       </div>
     )
@@ -34,7 +36,7 @@ class Note extends React.Component {
 
   renderDelete = () => {
     return (
-      <button onClick={this.props.onDelete}>
+      <button className="delete-note" onClick={this.props.onDelete}>
         <i className="fa fa-times"></i>
       </button>
     )

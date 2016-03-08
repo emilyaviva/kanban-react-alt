@@ -1,5 +1,44 @@
-@import "~font-awesome/scss/font-awesome";
-
 body {
   background: cornsilk;
+  font-family: sans-serif;
+}
+
+.add-note {
+  background-color: #fdfdfd;
+  border: 1px solid #ccc;
+}
+
+.Notes {
+  margin: 0.5em;
+  padding-left: 0;
+  max-width: 10em;
+  list-style: none;
+}
+
+.Note {
+  margin-bottom: 0.5em;
+  padding: 0.5em;
+  background-color: #fdfdfd;
+  box-shadow: 0 0 0.3em 0.03em rgba(0, 0, 0, 0.3);
+  &:hover {
+    box-shadow: 0 0 0.3em 0.03em rgba(0, 0, 0, 0.7);
+    transition: 200ms;
+  }
+  .note-contents {
+    display: flex;
+    justify-content: space-between;
+    .task {
+      display: inline-block;
+    }
+    .delete-note {
+      padding: 0;
+      background-color: #fdfdfd;
+      border: none;
+      cursor: pointer;
+      visibility: hidden;
+    }
+    &:hover .delete-note {
+      visibility: visible;
+    }
+  }
 }

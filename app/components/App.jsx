@@ -55,8 +55,8 @@ class App extends React.Component {
     const notes = this.state.notes
     return (
       <div>
-        <button onClick={this.addNote}>
-          <i className="fa plus-square"></i>
+        <button className="add-note" onClick={this.addNote}>
+          <i className="fa fa-plus"></i>
         </button>
         <Notes
           notes={notes}
