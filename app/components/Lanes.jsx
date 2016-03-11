@@ -1,13 +1,16 @@
 import React from 'react'
+import Lane from './Lane'
 
-class Lanes extends React.Component {
-  render() {
-    return (
-      <div className="lanes">
-        lanes will go here
-      </div>
-    )
-  }
+export default ({lanes}) => {
+  return (
+    <div className="lanes">
+      {lanes.map(lane =>
+        <Lane
+          className="lane"
+          key={lane.id}
+          lane={lane}
+        />
+      )}
+    </div>
+  )
 }
-
-export default Lanes
