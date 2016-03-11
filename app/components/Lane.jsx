@@ -6,42 +6,42 @@ import NoteStore from '../stores/NoteStore'
 import LaneActions from '../actions/LaneActions'
 
 class Lane extends React.Component {
+  addNote = (e) => {
+    const laneId = this.props.lane.id
+    const note = NoteActions.create({
+      task: 'New task'
+    })
+    LaneActions.attachToLane({
+      noteId: note.id,
+      laneId
+    })
+  }
+
+  deleteNote = (noteId, e) => {
+    e.stopPropagation()
+    const laneId = this.props.lane.id
+    LaneActions.detachfromLane({
+      laneId,
+      noteId
+    })
+    NoteActions.delete(noteId)
+  }
+
+  editNote(id, task) {
+    if (!task.trim()) {
+      return
+    }
+    NoteActions.update({
+      id,
+      task
+    })
+  }
+
   render() {
     const {
       lane,
       ...props
     } = this.props
-
-    addNote = (e) => {
-      const laneId = this.props.lane.id
-      const note = NoteActions.create({
-        task: 'New task'
-      })
-      LaneActions.attachToLane({
-        noteId: note.id,
-        laneId
-      })
-    }
-
-    deleteNote = (noteId, e) => {
-      e.stopPropagation()
-      const laneId = this.props.lane.id
-      LaneActions.detachfromLane({
-        laneId,
-        noteId
-      })
-      NoteActions.delete(noteId)
-    }
-
-    editNote(id, task) {
-      if (!task.trim()) {
-        return
-      }
-      NoteActions.update({
-        id,
-        task
-      })
-    }
 
     return (
       <div {...props}>
