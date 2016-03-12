@@ -15,10 +15,16 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <button
+          className="add-lane"
+          onClick={this.addLane}
+        >
+          <i className="fa fa-plus"></i>
+        </button>
         <AltContainer
           stores={[LaneStore]}
           inject={{
-            lanes: () => LaneStore.getState().lanes
+            lanes: () => LaneStore.getState().lanes || []
           }}
         >
           <Lanes />
